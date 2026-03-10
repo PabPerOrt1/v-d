@@ -5,7 +5,7 @@
 }
 
 body {
-    background-color: #FFE4E8;
+    background-color: #ede8ff;
     font-family: 'Nunito', sans-serif;
     min-height: 100vh;
     display: flex;
@@ -13,9 +13,9 @@ body {
     align-items: center;
     overflow: hidden;
     background-image:
-        radial-gradient(circle at 15% 85%, #ffb3c1 0%, transparent 40%),
-        radial-gradient(circle at 85% 15%, #ff8fa3 0%, transparent 40%),
-        radial-gradient(circle at 50% 50%, #fff0f3 0%, transparent 60%);
+        radial-gradient(circle at 15% 85%, #d8caf5 0%, transparent 40%),
+        radial-gradient(circle at 85% 15%, #c4b0f0 0%, transparent 40%),
+        radial-gradient(circle at 50% 50%, #f5f2ff 0%, transparent 60%);
 }
 
 /* Floating hearts background */
@@ -29,7 +29,7 @@ body {
 
 .hearts-bg::before,
 .hearts-bg::after {
-    content: '💕 💗 💖 💝 💓';
+    content: '💜 💗 💖 💝 💓';
     position: absolute;
     font-size: 1.5rem;
     opacity: 0.15;
@@ -42,7 +42,7 @@ body {
 .hearts-bg::after {
     animation-delay: 6s;
     left: 60%;
-    content: '💗 💕 💓 💖 💝';
+    content: '💗 💜 💓 💖 💝';
 }
 
 @keyframes floatHearts {
@@ -54,16 +54,19 @@ body {
     position: relative;
     z-index: 1;
     text-align: center;
-    padding: 40px 20px;
+    padding: 32px 16px;
+    width: 100%;
+    max-width: 480px;
 }
 
 h1 {
-    font-size: 2.4rem;
-    color: #d63384;
+    font-size: 2rem;
+    color: #6d28d9;
     font-weight: 900;
-    margin-bottom: 20px;
-    text-shadow: 2px 2px 0px rgba(214, 51, 132, 0.2);
+    margin-bottom: 16px;
+    text-shadow: 2px 2px 0px rgba(109, 40, 217, 0.2);
     animation: wiggle 2s ease-in-out infinite;
+    line-height: 1.3;
 }
 
 @keyframes wiggle {
@@ -72,14 +75,14 @@ h1 {
 }
 
 .gif-container {
-    margin: 20px auto;
+    margin: 16px auto;
     display: flex;
     justify-content: center;
 }
 
 #cat-gif {
-    width: 200px;
-    height: 200px;
+    width: 180px;
+    height: 180px;
     object-fit: contain;
     filter: drop-shadow(0 8px 16px rgba(0,0,0,0.15));
     transition: opacity 0.3s ease;
@@ -87,10 +90,10 @@ h1 {
 
 .buttons {
     display: flex;
-    gap: 20px;
+    gap: 16px;
     justify-content: center;
     align-items: center;
-    margin-top: 30px;
+    margin-top: 24px;
     flex-wrap: wrap;
 }
 
@@ -99,14 +102,15 @@ h1 {
     color: white;
     border: none;
     border-radius: 16px;
-    font-size: 1.6rem;
+    font-size: 1.5rem;
     font-weight: 900;
     font-family: 'Nunito', sans-serif;
-    padding: 18px 45px;
+    padding: 16px 40px;
     cursor: pointer;
     transition: transform 0.15s, box-shadow 0.15s;
     box-shadow: 0 6px 20px rgba(76, 175, 80, 0.45);
     letter-spacing: 1px;
+    touch-action: manipulation;
 }
 
 #yes-btn:hover {
@@ -130,23 +134,24 @@ h1 {
     cursor: pointer;
     transition: background 0.2s, left 0.25s ease, top 0.25s ease;
     box-shadow: 0 4px 14px rgba(231, 76, 60, 0.4);
+    touch-action: manipulation;
 }
 
 #no-btn:hover {
     background: linear-gradient(135deg, #c0392b, #a93226);
 }
 
-
 #tease-toast {
     margin-top: 14px;
     font-size: 1rem;
-    color: #d63384;
+    color: #6d28d9;
     font-weight: 700;
     font-style: italic;
     opacity: 0;
     transform: translateY(6px);
     transition: opacity 0.3s ease, transform 0.3s ease;
     min-height: 1.5rem;
+    padding: 0 12px;
 }
 
 #tease-toast.show {
@@ -157,7 +162,7 @@ h1 {
 /* Music toggle button */
 #music-toggle {
     position: fixed;
-    bottom: 20px;
+    bottom: max(20px, env(safe-area-inset-bottom, 20px));
     right: 20px;
     background: rgba(255, 255, 255, 0.85);
     border: none;
@@ -170,29 +175,135 @@ h1 {
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
     transition: transform 0.2s;
     z-index: 100;
+    touch-action: manipulation;
 }
 
 #music-toggle:hover {
     transform: scale(1.1);
 }
 
-/* Yes page specific */
-.yes-container h1.yes-title {
-    font-size: 2.8rem;
+/* ── Yes page ────────────────────────────────────────────── */
+
+body.yes-page {
+    overflow-y: auto;
+    align-items: flex-start;
+    padding: 32px 0 60px;
+}
+
+.yes-container {
+    max-width: 960px;
+    padding: 24px 16px;
+}
+
+/* Three-column layout: gifs | text | gifs */
+.letter-layout {
+    display: flex;
+    align-items: flex-start;
+    gap: 20px;
+    width: 100%;
+}
+
+.side-gifs {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    flex-shrink: 0;
+}
+
+.side-gif {
+    width: 140px;
+    height: 140px;
+    object-fit: contain;
+    filter: drop-shadow(0 6px 12px rgba(0,0,0,0.13));
+    display: block;
+}
+
+.letter-content {
+    flex: 1;
+    min-width: 0;
+}
+
+.yes-title {
+    font-size: 2rem;
+    color: #6d28d9;
+    font-weight: 900;
+    margin-bottom: 20px;
+    text-shadow: 2px 2px 0px rgba(109, 40, 217, 0.2);
     animation: bounceTitle 0.6s ease infinite alternate;
+    text-align: center;
 }
 
 @keyframes bounceTitle {
     from { transform: translateY(0) rotate(-1deg); }
-    to { transform: translateY(-12px) rotate(1deg); }
+    to { transform: translateY(-10px) rotate(1deg); }
 }
 
-.yes-message {
-    font-size: 1.4rem;
-    color: #e91e8c;
-    font-weight: 700;
-    margin-top: 24px;
+/* Love letter card */
+.love-letter {
+    background: rgba(255, 255, 255, 0.78);
+    border: 2px solid rgba(109, 40, 217, 0.2);
+    border-radius: 20px;
+    padding: 28px 32px;
+    backdrop-filter: blur(8px);
+    box-shadow: 0 8px 32px rgba(109, 40, 217, 0.1);
     animation: fadeIn 1s ease 0.5s both;
+    min-height: 220px;
+}
+
+.letter-text {
+    font-size: 1.05rem;
+    color: #4c1d95;
+    font-weight: 600;
+    line-height: 1.9;
+    text-align: left;
+    white-space: pre-line;
+    transition: opacity 0.18s ease;
+}
+
+/* Pagination */
+.pagination {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    margin-top: 20px;
+}
+
+.page-btn {
+    background: linear-gradient(135deg, #7c3aed, #6d28d9);
+    color: white;
+    border: none;
+    border-radius: 12px;
+    font-size: 0.95rem;
+    font-weight: 700;
+    font-family: 'Nunito', sans-serif;
+    padding: 10px 22px;
+    cursor: pointer;
+    transition: transform 0.15s, box-shadow 0.15s, opacity 0.15s;
+    box-shadow: 0 4px 14px rgba(109, 40, 217, 0.35);
+    touch-action: manipulation;
+}
+
+.page-btn:hover:not(:disabled) {
+    transform: scale(1.05) translateY(-1px);
+    box-shadow: 0 6px 18px rgba(109, 40, 217, 0.45);
+}
+
+.page-btn:active:not(:disabled) {
+    transform: scale(0.97);
+}
+
+.page-btn:disabled {
+    opacity: 0.35;
+    cursor: default;
+}
+
+.page-indicator {
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: #6d28d9;
+    min-width: 48px;
+    text-align: center;
 }
 
 @keyframes fadeIn {
@@ -200,7 +311,117 @@ h1 {
     to { opacity: 1; transform: translateY(0); }
 }
 
-.yes-container #cat-gif {
-    width: 260px;
-    height: 260px;
+/* ── Mobile ──────────────────────────────────────────────── */
+
+@media (max-width: 640px) {
+    /* Main page */
+    h1 {
+        font-size: 1.55rem;
+    }
+
+    #cat-gif {
+        width: 150px;
+        height: 150px;
+    }
+
+    /* Cap Yes button so it never escapes screen width */
+    #yes-btn {
+        font-size: 1.3rem;
+        padding: 14px 32px;
+        max-width: 90vw;
+    }
+
+    /* Side GIFs visible on mobile but smaller */
+    .side-gifs {
+        gap: 8px;
+    }
+
+    .side-gif {
+        width: 70px;
+        height: 70px;
+    }
+
+    .letter-layout {
+        gap: 8px;
+    }
+
+    /* Yes page */
+    body.yes-page {
+        padding: 20px 0 72px; /* extra bottom for iOS home indicator */
+    }
+
+    .yes-container {
+        width: 100%;
+        padding: 16px 8px;
+    }
+
+    .yes-title {
+        font-size: 1.5rem;
+        margin-bottom: 14px;
+    }
+
+    .love-letter {
+        padding: 18px 16px;
+        min-height: 180px;
+    }
+
+    .letter-text {
+        font-size: 0.97rem;
+        line-height: 1.8;
+    }
+
+    /* Bigger tap targets for pagination */
+    .pagination {
+        gap: 12px;
+        margin-top: 16px;
+    }
+
+    .page-btn {
+        font-size: 0.9rem;
+        padding: 13px 18px; /* ≥44px height */
+        border-radius: 10px;
+    }
+
+    .page-indicator {
+        font-size: 0.9rem;
+    }
+}
+
+/* Very small screens (e.g. iPhone SE 1st gen, 320px) — 6 GIFs no caben, se quita el último de cada lado */
+@media (max-width: 380px) {
+    h1 {
+        font-size: 1.35rem;
+    }
+
+    #cat-gif {
+        width: 130px;
+        height: 130px;
+    }
+
+    .yes-title {
+        font-size: 1.3rem;
+    }
+
+    .letter-text {
+        font-size: 0.92rem;
+    }
+
+    .page-btn {
+        font-size: 0.82rem;
+        padding: 12px 14px;
+    }
+
+    /* Reduce GIFs and hide the 3rd (last) of each column */
+    .side-gif {
+        width: 56px;
+        height: 56px;
+    }
+
+    .side-gifs .side-gif:last-child {
+        display: none;
+    }
+
+    .yes-container {
+        padding: 12px 6px;
+    }
 }

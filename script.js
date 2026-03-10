@@ -1,31 +1,40 @@
 const gifStages = [
-    "https://media.tenor.com/EBV7OT7ACfwAAAAj/u-u-qua-qua-u-quaa.gif",    // 0 normal
+     //Primero
+    "https://media1.tenor.com/m/8JSTqLq5ot8AAAAd/cute-blinking.gif",    // 0 normal
     "https://media1.tenor.com/m/uDugCXK4vI4AAAAd/chiikawa-hachiware.gif",  // 1 confused
     "https://media.tenor.com/f_rkpJbH1s8AAAAj/somsom1012.gif",             // 2 pleading
     "https://media.tenor.com/OGY9zdREsVAAAAAj/somsom1012.gif",             // 3 sad
-    "https://media1.tenor.com/m/WGfra-Y_Ke0AAAAd/chiikawa-sad.gif",       // 4 sadder
+    "https://media1.tenor.com/m/Xj0I2vMUoOIAAAAd/qazqaz.gif",       // 4 sadder
     "https://media.tenor.com/CivArbX7NzQAAAAj/somsom1012.gif",             // 5 devastated
     "https://media.tenor.com/5_tv1HquZlcAAAAj/chiikawa.gif",               // 6 very devastated
     "https://media1.tenor.com/m/uDugCXK4vI4AAAAC/chiikawa-hachiware.gif"  // 7 crying runaway
 ]
 
+// const gifBackup = [
+//     "https://media1.tenor.com/m/uDugCXK4vI4AAAAd/chiikawa-hachiware.gif",  // 1 confused
+//     "https://media.tenor.com/f_rkpJbH1s8AAAAj/somsom1012.gif",             // 2 pleading
+//     "https://media.tenor.com/OGY9zdREsVAAAAAj/somsom1012.gif",             // 3 sad
+//     "https://media1.tenor.com/m/WGfra-Y_Ke0AAAAd/chiikawa-sad.gif",       // 4 sadder
+//     "https://media.tenor.com/CivArbX7NzQAAAAj/somsom1012.gif",             // 5 devastated
+//     "https://media.tenor.com/5_tv1HquZlcAAAAj/chiikawa.gif",               // 6 very devastated
+//     "https://media1.tenor.com/m/uDugCXK4vI4AAAAC/chiikawa-hachiware.gif"  // 7 crying runaway
+// ]
+
 const noMessages = [
     "No",
-    "Are you positive? 🤔",
-    "Pookie please... 🥺",
-    "If you say no, I will be really sad...",
-    "I will be very sad... 😢",
-    "Please??? 💔",
-    "Don't do this to me...",
-    "Last chance! 😭",
-    "You can't catch me anyway 😜"
+    "¿Estás segura? 🤔",
+    "Gordita... 🥺",
+    "Jope...",
+    "Me pondré muy triste... 😢",
+    "Rata 😡",
+    "¿Por favor??? 💔",
+    "¡Última oportunidad! 😭",
+    "De todas formas no me puedes atrapar 🙂‍↕️​"
 ]
 
 const yesTeasePokes = [
-    "try saying no first... I bet you want to know what happens 😏",
-    "go on, hit no... just once 👀",
-    "you're missing out 😈",
-    "click no, I dare you 😏"
+    "Dale primero a NO que es mas divertido :P",
+    "Dale a NO un poco mas pero tienes que querer darle a SI eh 👀"
 ]
 
 let yesTeasedCount = 0
@@ -81,7 +90,7 @@ function showTeaseMessage(msg) {
     toast.textContent = msg
     toast.classList.add('show')
     clearTimeout(toast._timer)
-    toast._timer = setTimeout(() => toast.classList.remove('show'), 2500)
+    toast._timer = setTimeout(() => toast.classList.remove('show'), 4500)
 }
 
 function handleNoClick() {
@@ -93,9 +102,10 @@ function handleNoClick() {
 
     // Grow the Yes button bigger each time
     const currentSize = parseFloat(window.getComputedStyle(yesBtn).fontSize)
-    yesBtn.style.fontSize = `${currentSize * 1.35}px`
-    const padY = Math.min(18 + noClickCount * 5, 60)
-    const padX = Math.min(45 + noClickCount * 10, 120)
+    const maxFont = window.innerWidth < 640 ? 48 : 80
+    yesBtn.style.fontSize = `${Math.min(currentSize * 1.35, maxFont)}px`
+    const padY = Math.min(18 + noClickCount * 5, window.innerWidth < 640 ? 32 : 60)
+    const padX = Math.min(45 + noClickCount * 10, window.innerWidth < 640 ? 60 : 120)
     yesBtn.style.padding = `${padY}px ${padX}px`
 
     // Shrink No button to contrast
