@@ -1,8 +1,22 @@
 // ── Carta (una página por entrada del array) ──────────────
 const letterPages = [
-    `Lorem ipsum dolor sit amet consectetur adipiscing elit, sem hac aenean vehicula duis tellus dapibus, ultrices sed scelerisque cubilia ligula integer. Feugiat fringilla sociosqu a mi torquent nunc, iaculis blandit fusce pulvinar at ligula, elementum augue integer porta montes. Tempor nascetur orci condimentum dictumst proin nisl cursus sagittis suspendisse, purus rhoncus quis cras himenaeos primis cubilia potenti.`,
+    `Hola mi vida,
 
-    `Erat velit ultricies arcu fusce lectus nascetur vestibulum aliquam, mattis felis nec leo fringilla accumsan dictum nostra, platea gravida venenatis sociosqu volutpat donec ornare. Nisl tortor ante mi congue est taciti phasellus a libero tempor pretium consequat, class nec fusce litora egestas nisi velit nam odio lectus risus. Primis augue sociosqu himenaeos luctus fames consequat porta hendrerit, varius facilisis integer class suspendisse lacus senectus dictumst, venenatis habitasse vulputate est sollicitudin rutrum mauris.`
+Hoy es el día del amor, de quererse, de las parejas, de enamorarse y de estar unidos.
+Y si bien yo te amo, te quiero, soy y quiero siempre ser tu pareja, estoy enamorado de ti y siempre estaremos unidos...
+Hoy esto quiero que vaya solo de ti, porque te lo mereces.
+
+Porque amar no es solo besos y querer, amar también es conocerse, saber los detalles que te hacen especial...
+Y si bien yo te conozco mucho, mi gordita, quiero conocer de dónde vienes, por qué eres como eres y quién te ha hecho así, porque la verdad es que me encanta.
+Quiero estar más en tu vida, conocer lo que te importa y formar aún más parte de tu universo. Es por eso que quiero conocer a las personas que te enseñaron el amor desde bien pequeña.`,
+
+    `Quiero conocer a tus abuelos, las dos hojitas de trébol que me faltan. Sé que son muy importantes para tu vida, sé que son tu fuerza y alegría, y que te encantaría pasar más tiempo con ellos y que yo los conozca, por eso: nos vamos a MadriZz :)
+
+Te amo mucho, mi gordita. Espero que te encante la sorpresa (y las que quedan por venir jiji), estoy loco porque vayamos y verte sonreír de esa manera que me gusta tanto.
+
+Un beso de tu amor, novio, futuro marido, mejor amigo y compañero de locuras y viajes.
+
+Tú gordito, Pablo`
 ]
 
 let currentPage = 0
